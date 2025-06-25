@@ -1,18 +1,9 @@
+version: '3.8'
 services:
-  nginx:
-    build: ./nginx
-    ports:
-      - "8080:80"
-    depends_on:
-      - service1
-      - service2
-    networks:
-      - backend
-
   service1:
     build: ./service_1
-    expose:
-      - "8000"
+    ports:
+      - "8001:8000"
     networks:
       - backend
     healthcheck:
@@ -23,8 +14,8 @@ services:
 
   service2:
     build: ./service_2
-    expose:
-      - "8000"
+    ports:
+      - "8002:8000"
     networks:
       - backend
     healthcheck:
